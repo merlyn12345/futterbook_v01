@@ -1,0 +1,19 @@
+{{> header.html}}
+
+<h1>Eingabe</h1>
+
+{{> nav_main.html}}
+
+<form method="post" id="submitform">
+    <select name="kategorie" id="kategorie">
+        {{#kategorien}}
+        <option value="{{kategorie}}">{{kategorie}}</option>
+        {{/kategorien}}
+    </select>
+    <label for="quantity">Menge (in g/ml)</label>
+    <input type="text" name="quantity" id="quantity" size="4">
+    <button id="submitbutton">Abschicken</button>
+</form>
+
+
+{{> footer.html}}

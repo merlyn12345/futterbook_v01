@@ -1,0 +1,20 @@
+{{> header.html}}
+
+<h1>{{user}} - Dein Essen</h1>
+
+{{> nav_main.html}}
+
+<div class="entries">
+    {{#nahrungsmittel}}
+    <div>
+        <span>🍳</span>
+        <h2><a href="details/{{nahrungID}}">{{Name}}</a></h2>
+        <p>Menge: {{amount}}<br>
+        Datum: {{stime}}<br>
+            Energie (cal): {{Energie (cal)}}
+        </p>
+    </div>
+    {{/nahrungsmittel}}
+</div>
+
+{{> footer.html}}

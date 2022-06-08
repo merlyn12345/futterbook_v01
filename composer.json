@@ -1,0 +1,17 @@
+{
+    "autoload": {
+    "psr-4": {
+        "App\\" : "app/"
+    }
+},
+    "require": {
+        "slim/slim": "4.*",
+        "slim/psr7": "^1.5",
+        "php-di/php-di": "^6.4",
+        "mustache/mustache": "^2.14",
+        "slim/http": "^1.2",
+        "ext-pdo": "*",
+        "ext-json": "*",
+        "bryanjhv/slim-session": "^4.1"
+    }
+}
