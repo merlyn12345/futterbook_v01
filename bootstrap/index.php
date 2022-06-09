@@ -41,7 +41,9 @@ $container->set('session', function(){
     return new \SlimSession\Helper();
 });
 
-
+$container->set('dbrenderer', function(){
+    return new \App\Middleware\HandleDboutput();
+});
 
 $app->add(new \Slim\Middleware\Session);
 
@@ -55,12 +57,12 @@ $app->get('/logout', '\App\Controller\AuthController:logout');
 $app->group('/secure', function($app){
     $app->get('', '\App\Controller\SecureController:start');
     $app->get('/status', '\App\Controller\SecureController:status');
-    $app->get('/usersFood', '\App\Controller\InputController:usersFood');
     $app->get('/ext_source', '\App\Controller\ApiController:external');
     $app->get('/submit', '\App\Controller\InputController:kategorien');
     $app->post('/submit', '\App\Controller\InputController:submit');
     $app->get('/selectdata/{kategorie}', '\App\Controller\InputController:items');
-    $app->get('/details/{id:[0-9]+}', '\App\Controller\InputController:details');
+    $app->get('/details/{id:[0-9]+}', '\App\Controller\OutputController:details');
+    $app->get('/usersFood', '\App\Controller\OutputController:usersFood');
 })->add(new \App\Middleware\Authenticate($app->getContainer()->get('session')));
 
 

@@ -3,7 +3,6 @@
 <h1>{{user}} - Dein Essen</h1>
 
 {{> nav_main.html}}
-
 <div class="entries">
     {{#nahrungsmittel}}
     <div>
@@ -13,6 +12,7 @@
         Datum: {{stime}}<br>
             Energie (cal): {{Energie (cal)}}
         </p>
+        <span class="energieinhalt">Diese Portion: {{energie}}</span>
     </div>
     {{/nahrungsmittel}}
 </div>

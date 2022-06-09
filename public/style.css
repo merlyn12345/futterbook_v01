@@ -2,6 +2,7 @@ body {
     font-family: 'Open Sans', Helvetica, sans-serif;
     margin: 0;
     padding: 24px;
+    font-size: 1em;
 }
 
 header {
@@ -71,4 +72,9 @@ form label {
 .entries-icon {
     font-size: 1000%;
     margin: 0;
+}
+
+.entries > div span.energieinhalt {
+    font-size: 1rem;
+    color: #ff0020;
 }
