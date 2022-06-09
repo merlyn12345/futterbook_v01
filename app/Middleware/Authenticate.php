@@ -15,7 +15,7 @@ class Authenticate
     }
 
     /*
-     * Run the middleware
+     * Run the one-job-middleware
      * */
 
     public function __invoke(Request $request, RequestHandler $handler)

@@ -10,7 +10,7 @@ class InputController extends Controller
 {
 
 
-    public function kategorien(Request $request, Response $response):Response
+    public function getKategorien(Request $request, Response $response):Response
     {
         $kategorien = [];
         $sql = "SELECT DISTINCT kategorie FROM nahrung ORDER BY kategorie ASC";
@@ -35,7 +35,7 @@ class InputController extends Controller
     }
 
 
-    public function items(Request $request, Response $response, $args=[]):Response
+    public function getItems(Request $request, Response $response, $args=[]):Response
     {
         $items = [];
         $sql = "SELECT nahrungId, Name  FROM nahrung WHERE kategorie = '".$args['kategorie']."'";

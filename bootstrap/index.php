@@ -12,12 +12,17 @@ $container = new Container;
 
 
 AppFactory::setContainer($container);
+/*
+ *  initial configuration $settings
+ * */
 $settings = require __DIR__.'/../app/settings.php';  // returnt eine callback-function die das CI als Parameter hat
 $settings($container);
 
 $app = AppFactory::create();
 
-
+/*
+ * dependencies pushed into the container
+ * */
 
 $container->set('db', function()
 use ($app)
@@ -41,9 +46,13 @@ $container->set('session', function(){
     return new \SlimSession\Helper();
 });
 
+/*
+ * no idea, if middleware is the right namespace
+ * */
 $container->set('dbrenderer', function(){
     return new \App\Middleware\HandleDboutput();
 });
+
 
 $app->add(new \Slim\Middleware\Session);
 
@@ -54,13 +63,17 @@ $middleware($app);
 
 $app->get('/logout', '\App\Controller\AuthController:logout');
 
+/*
+ * 'secure' routes, only available, if there is a username registered in the session
+ * */
+
 $app->group('/secure', function($app){
     $app->get('', '\App\Controller\SecureController:start');
     $app->get('/status', '\App\Controller\SecureController:status');
     $app->get('/ext_source', '\App\Controller\ApiController:external');
-    $app->get('/submit', '\App\Controller\InputController:kategorien');
+    $app->get('/submit', '\App\Controller\InputController:getKategorien');
     $app->post('/submit', '\App\Controller\InputController:submit');
-    $app->get('/selectdata/{kategorie}', '\App\Controller\InputController:items');
+    $app->get('/selectdata/{kategorie}', '\App\Controller\InputController:getItems');
     $app->get('/details/{id:[0-9]+}', '\App\Controller\OutputController:details');
     $app->get('/usersFood', '\App\Controller\OutputController:usersFood');
 })->add(new \App\Middleware\Authenticate($app->getContainer()->get('session')));

@@ -54,7 +54,6 @@ $(document).ready(function(){
         $.ajax({
             type: "GET",
             url: "https://www.polynomic.net/ext_shop/"+userId,
-
             processData: false,
             contentType: false,
             cache: false,
